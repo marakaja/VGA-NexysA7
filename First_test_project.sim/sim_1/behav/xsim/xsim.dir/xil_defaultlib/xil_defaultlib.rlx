@@ -1,0 +1,10 @@
+0.7
+2020.2
+Oct 13 2023
+20:47:58
+C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.gen/sources_1/ip/blk_mem_gen_0/sim/blk_mem_gen_0.v,1711044604,verilog,,,,blk_mem_gen_0,,,,,,,,
+C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,,,,,,,
+C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.srcs/sim_1/new/tb_sync.vhd,1711102714,vhdl,,,,cfg_tb_toplevel;tb_toplevel,,,,,,,,
+C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.srcs/sources_1/new/CLK20M.vhd,1711103000,vhdl,,,,simple_counter,,,,,,,,
+C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.srcs/sources_1/new/pixelgen.vhd,1711102610,vhdl,,,,pixelgen,,,,,,,,
+C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.srcs/sources_1/new/toplevel.vhd,1711098654,vhdl,,,,toplevel,,,,,,,,

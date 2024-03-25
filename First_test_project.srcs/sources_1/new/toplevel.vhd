@@ -120,7 +120,7 @@ HSYNC : simple_counter
         NBIT => 10,
         PERIOD => 528,
         SYNC_LOW => 420,
-        SYNC_HIGH => 421
+        SYNC_HIGH => 484
     )
     port map (
         clk => pixel_freq,
@@ -135,8 +135,8 @@ VSYNC : simple_counter
     generic map (
         NBIT => 10,
         PERIOD => 628,
-        SYNC_LOW => 600,
-        SYNC_HIGH => 604
+        SYNC_LOW => 601,
+        SYNC_HIGH => 605
     )
     port map (
         clk => endline,

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="cfg_tb_toplevel_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_toplevel" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="6,663,999.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,665,979.001 ns"></ZoomEndTime>
+      <Cursor1Time time="6,633,655.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="144"></NameColumnWidth>
+      <ValueColumnWidth column_width="83"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="38" />
+   <wvobject fp_name="/tb_toplevel/VGA_HS" type="logic">
+      <obj_property name="ElementShortName">VGA_HS</obj_property>
+      <obj_property name="ObjectShortName">VGA_HS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/VGA_VS" type="logic">
+      <obj_property name="ElementShortName">VGA_VS</obj_property>
+      <obj_property name="ObjectShortName">VGA_VS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/CLK100MHZ" type="logic">
+      <obj_property name="ElementShortName">CLK100MHZ</obj_property>
+      <obj_property name="ObjectShortName">CLK100MHZ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/count" type="array">
+      <obj_property name="ElementShortName">count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sync" type="logic">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/counter_end" type="logic">
+      <obj_property name="ElementShortName">counter_end</obj_property>
+      <obj_property name="ObjectShortName">counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sig_count" type="array">
+      <obj_property name="ElementShortName">sig_count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sig_sync" type="logic">
+      <obj_property name="ElementShortName">sig_sync</obj_property>
+      <obj_property name="ObjectShortName">sig_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sig_counter_end" type="logic">
+      <obj_property name="ElementShortName">sig_counter_end</obj_property>
+      <obj_property name="ObjectShortName">sig_counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/NBIT" type="other">
+      <obj_property name="ElementShortName">NBIT</obj_property>
+      <obj_property name="ObjectShortName">NBIT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/PERIOD" type="other">
+      <obj_property name="ElementShortName">PERIOD</obj_property>
+      <obj_property name="ObjectShortName">PERIOD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/SYNC_LOW" type="other">
+      <obj_property name="ElementShortName">SYNC_LOW</obj_property>
+      <obj_property name="ObjectShortName">SYNC_LOW</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/SYNC_HIGH" type="other">
+      <obj_property name="ElementShortName">SYNC_HIGH</obj_property>
+      <obj_property name="ObjectShortName">SYNC_HIGH</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/en" type="logic">
+      <obj_property name="ElementShortName">en</obj_property>
+      <obj_property name="ObjectShortName">en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/count" type="array">
+      <obj_property name="ElementShortName">count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sync" type="logic">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/counter_end" type="logic">
+      <obj_property name="ElementShortName">counter_end</obj_property>
+      <obj_property name="ObjectShortName">counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sig_count" type="array">
+      <obj_property name="ElementShortName">sig_count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sig_sync" type="logic">
+      <obj_property name="ElementShortName">sig_sync</obj_property>
+      <obj_property name="ObjectShortName">sig_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sig_counter_end" type="logic">
+      <obj_property name="ElementShortName">sig_counter_end</obj_property>
+      <obj_property name="ObjectShortName">sig_counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/count" type="array">
+      <obj_property name="ElementShortName">count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sync" type="logic">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/counter_end" type="logic">
+      <obj_property name="ElementShortName">counter_end</obj_property>
+      <obj_property name="ObjectShortName">counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sig_count" type="array">
+      <obj_property name="ElementShortName">sig_count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sig_sync" type="logic">
+      <obj_property name="ElementShortName">sig_sync</obj_property>
+      <obj_property name="ObjectShortName">sig_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/HSYNC/sig_counter_end" type="logic">
+      <obj_property name="ElementShortName">sig_counter_end</obj_property>
+      <obj_property name="ObjectShortName">sig_counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/count" type="array">
+      <obj_property name="ElementShortName">count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sync" type="logic">
+      <obj_property name="ElementShortName">sync</obj_property>
+      <obj_property name="ObjectShortName">sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/counter_end" type="logic">
+      <obj_property name="ElementShortName">counter_end</obj_property>
+      <obj_property name="ObjectShortName">counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sig_count" type="array">
+      <obj_property name="ElementShortName">sig_count[9:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_count[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sig_sync" type="logic">
+      <obj_property name="ElementShortName">sig_sync</obj_property>
+      <obj_property name="ObjectShortName">sig_sync</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/sig_counter_end" type="logic">
+      <obj_property name="ElementShortName">sig_counter_end</obj_property>
+      <obj_property name="ObjectShortName">sig_counter_end</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/NBIT" type="other">
+      <obj_property name="ElementShortName">NBIT</obj_property>
+      <obj_property name="ObjectShortName">NBIT</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/PERIOD" type="other">
+      <obj_property name="ElementShortName">PERIOD</obj_property>
+      <obj_property name="ObjectShortName">PERIOD</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/SYNC_LOW" type="other">
+      <obj_property name="ElementShortName">SYNC_LOW</obj_property>
+      <obj_property name="ObjectShortName">SYNC_LOW</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/VSYNC/SYNC_HIGH" type="other">
+      <obj_property name="ElementShortName">SYNC_HIGH</obj_property>
+      <obj_property name="ObjectShortName">SYNC_HIGH</obj_property>
+   </wvobject>
+</wave_config>

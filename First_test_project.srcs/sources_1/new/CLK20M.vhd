@@ -31,7 +31,7 @@ entity simple_counter is
         en    : in    std_logic;                          --! Clock enable input
         count : out   std_logic_vector(NBIT - 1 downto 0); --! Counter value
         sync  : out   std_logic;
-        counter_end : out std_logic     --! End of line
+        counter_end : out std_logic := '0'    --! End of line
     );
 end entity simple_counter;
 
@@ -61,16 +61,16 @@ begin
             elsif (en = '1') then
                 sig_count <= sig_count + 1; -- increment counter
                 
-                if (sig_count = PERIOD) then -- end period
+                if (sig_count = PERIOD - 1) then -- end period
                     sig_count <= (others => '0');
                     sig_counter_end <= '1';
                 else
                     sig_counter_end <= '0';
                 end if;
                 
-                if (sig_count = SYNC_LOW) then -- signal sync low
+                if (sig_count = SYNC_LOW - 1) then -- signal sync low
                     sig_sync <= '0';
-                elsif (sig_count = SYNC_HIGH) then
+                elsif (sig_count = SYNC_HIGH - 1) then
                     sig_sync <= '1';
                 end if;
             -- Each `if` must end by `end if`

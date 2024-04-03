@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.runs/impl_1/toplevel.tcl"
+  variable script "C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/impl_1/toplevel.tcl"
   variable category "vivado_impl"
 }
 
@@ -130,17 +130,18 @@ OPTRACE "create in-memory project" START { }
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir {C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.cache/wt} [current_project]
-  set_property parent.project_path {C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.xpr} [current_project]
-  set_property ip_output_repo {{C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.cache/ip}} [current_project]
+  set_property webtalk.parent_dir {C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.cache/wt} [current_project]
+  set_property parent.project_path {C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.xpr} [current_project]
+  set_property ip_output_repo {{C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.cache/ip}} [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet {{C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.runs/synth_1/toplevel.dcp}}
-  read_ip -quiet {{C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci}}
+  add_files -quiet {{C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/synth_1/toplevel.dcp}}
+  read_ip -quiet {{C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci}}
+  read_edif {{C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/FC1001_RMII.edn}}
 OPTRACE "read constraints: implementation" START { }
-  read_xdc {{C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.srcs/constrs_1/new/Cons.xdc}}
+  read_xdc {{C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/constrs_1/new/Cons.xdc}}
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "read constraints: implementation_pre" START { }
 OPTRACE "read constraints: implementation_pre" END { }

@@ -2,21 +2,6 @@ from PIL import Image
 import numpy as np
 import os
 
-def png_to_binary_12bit(image_path):
-  """Converts a PNG image to a 12-bit binary representation of its pixels.
-
-  Args:
-      image_path: Path to the PNG image file.
-
-  Returns:
-      A NumPy array containing the 12-bit binary representation of the image pixels.
-  """
-
-
-
-
-
-
 # Get the image path from the user
 image_path = input("Enter the path to your PNG image: ")
 
@@ -26,15 +11,19 @@ img = Image.open(image_path)
   # Convert image to a NumPy array
 img_array = np.array(img)
 
+
 #Remove alpha channel if it exists
 if img_array.shape[2] > 3:
   img_array = img_array[:, :, :3]
+
+print(f"Image shape: {img_array.shape}")
+print(f"Image data type: {img_array.dtype}")
+print(f"Image firt pixel: {img_array[0, 0]}")
 
 
 
 # Convert each channel to 12-bit binary representation (0 to 4095) ignore last element
 binary_array = np.zeros_like(img_array, dtype=np.uint16)  # Use uint16 for 16-bit integers
-print(binary_array)
 
 for i in range(3):  # Loop over each channel (R, G, B)
   binary_array[:, :, i] = img_array[:, :, i] >> 4  # Shift 4 bits to the right to get 12-bit binary representation

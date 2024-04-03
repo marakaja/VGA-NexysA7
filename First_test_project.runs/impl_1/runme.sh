@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.runs/impl_1'
+HD_PWD='C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Mar 22 10:39:13 2024
+| Date         : Wed Apr  3 11:35:18 2024
 | Host         : MARABOOK2 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file toplevel_timing_summary_routed.rpt -pb toplevel_timing_summary_routed.pb -rpx toplevel_timing_summary_routed.rpx -warn_on_violation
 | Design       : toplevel
@@ -41,9 +41,10 @@ Timing Summary Report
 | ------------------
 ------------------------------------------------------------------------------------------------
 
-Rule       Severity          Description                  Violations  
----------  ----------------  ---------------------------  ----------  
-TIMING-17  Critical Warning  Non-clocked sequential cell  82          
+Rule       Severity          Description                       Violations  
+---------  ----------------  --------------------------------  ----------  
+TIMING-17  Critical Warning  Non-clocked sequential cell       1000        
+HPDR-1     Warning           Port pin direction inconsistency  1           
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -53,12 +54,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (82)
+1. checking no_clock (1415)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (701)
-5. checking no_input_delay (0)
-6. checking no_output_delay (14)
+4. checking unconstrained_internal_endpoints (3267)
+5. checking no_input_delay (3)
+6. checking no_output_delay (32)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -66,13 +67,15 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (82)
--------------------------
- There are 59 register/latch pins with no clock driven by root clock pin: CLK100MHZ (HIGH)
+1. checking no_clock (1415)
+---------------------------
+ There are 1391 register/latch pins with no clock driven by root clock pin: CLK100MHZ (HIGH)
 
  There are 12 register/latch pins with no clock driven by root clock pin: CLOCK_DIV/sig_counter_end_reg/Q (HIGH)
 
  There are 11 register/latch pins with no clock driven by root clock pin: HSYNC/sig_counter_end_reg/Q (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: eth/n1382/n555_reg/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -85,23 +88,23 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (701)
---------------------------------------------------
- There are 701 pins that are not constrained for maximum delay. (HIGH)
+4. checking unconstrained_internal_endpoints (3267)
+---------------------------------------------------
+ There are 3267 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (0)
+5. checking no_input_delay (3)
 ------------------------------
- There are 0 input ports with no input delay specified.
+ There are 3 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (14)
+6. checking no_output_delay (32)
 --------------------------------
- There are 14 ports with no output delay specified. (HIGH)
+ There are 32 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -146,7 +149,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                  715          inf        0.000                      0                  715           NA           NA                      NA                    NA  
+        inf        0.000                      0                 3299          inf        0.000                      0                 3299           NA           NA                      NA                    NA  
 
 
 There are no user specified timing constraints.
@@ -215,368 +218,300 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           715 Endpoints
-Min Delay           715 Endpoints
+Max Delay          3299 Endpoints
+Min Delay          3299 Endpoints
 --------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T/ADDRARDADDR[15]
+  Destination:            VGA_B3
+                            (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        14.033ns  (logic 3.555ns (25.333%)  route 10.478ns (74.667%))
-  Logic Levels:           8  (CARRY4=4 FDRE=1 LUT2=2 LUT6=1)
+  Data Path Delay:        17.159ns  (logic 4.986ns (29.057%)  route 12.173ns (70.943%))
+  Logic Levels:           5  (FDRE=1 LUT4=1 LUT6=1 MUXF7=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.942     5.812 r  pxlgen/mem_i_21/O[3]
-                         net (fo=1, routed)           0.694     6.506    VSYNC/addr0[11]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.306     6.812 r  VSYNC/mem_i_2/O
-                         net (fo=42, routed)          7.221    14.033    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/addra[15]
-    RAMB36_X0Y20         RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T/ADDRARDADDR[15]
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        13.439ns  (logic 3.804ns (28.305%)  route 9.635ns (71.695%))
-  Logic Levels:           10  (CARRY4=5 FDRE=1 LUT2=2 LUT5=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.852     5.722 r  pxlgen/mem_i_21/CO[3]
-                         net (fo=1, routed)           0.000     5.722    pxlgen/mem_i_21_n_0
-    SLICE_X33Y83         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     5.944 f  pxlgen/mem_i_20/O[0]
-                         net (fo=1, routed)           0.952     6.895    VSYNC/addr0[12]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.299     7.194 f  VSYNC/mem_i_1/O
-                         net (fo=42, routed)          5.778    12.973    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_init.ram/addra[16]
-    SLICE_X8Y92          LUT5 (Prop_lut5_I4_O)        0.124    13.097 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_i_1__17/O
-                         net (fo=1, routed)           0.343    13.439    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_init.ram/ramloop[21].ram.ram_ena
-    RAMB36_X0Y18         RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[21].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B/ADDRARDADDR[15]
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        13.376ns  (logic 3.555ns (26.578%)  route 9.821ns (73.422%))
-  Logic Levels:           8  (CARRY4=4 FDRE=1 LUT2=2 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_O[3])
-                                                      0.942     5.812 r  pxlgen/mem_i_21/O[3]
-                         net (fo=1, routed)           0.694     6.506    VSYNC/addr0[11]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.306     6.812 r  VSYNC/mem_i_2/O
-                         net (fo=42, routed)          6.564    13.376    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/addra[15]
-    RAMB36_X0Y19         RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B/ADDRARDADDR[15]
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T/ENARDEN
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        13.129ns  (logic 3.680ns (28.030%)  route 9.449ns (71.970%))
-  Logic Levels:           9  (CARRY4=5 FDRE=1 LUT2=2 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.852     5.722 r  pxlgen/mem_i_21/CO[3]
-                         net (fo=1, routed)           0.000     5.722    pxlgen/mem_i_21_n_0
-    SLICE_X33Y83         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     5.944 f  pxlgen/mem_i_20/O[0]
-                         net (fo=1, routed)           0.952     6.895    VSYNC/addr0[12]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.299     7.194 f  VSYNC/mem_i_1/O
-                         net (fo=42, routed)          5.935    13.129    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/ENA
-    RAMB36_X0Y20         RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T/ENARDEN  (IS_INVERTED)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[2]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        13.100ns  (logic 3.540ns (27.024%)  route 9.560ns (72.976%))
-  Logic Levels:           10  (CARRY4=5 FDRE=1 LUT1=1 LUT2=1 LUT5=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[2]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  VSYNC/sig_count_reg[2]/Q
-                         net (fo=15, routed)          1.034     1.490    VSYNC/sig_count_reg[9]_0[1]
-    SLICE_X30Y80         LUT1 (Prop_lut1_I0_O)        0.124     1.614 r  VSYNC/multOp_carry_i_3/O
-                         net (fo=1, routed)           0.000     1.614    pxlgen/multOp__25_carry__0_i_4[0]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.578     2.192 r  pxlgen/multOp_carry/O[2]
-                         net (fo=1, routed)           0.812     3.004    VSYNC/O[2]
-    SLICE_X31Y81         LUT2 (Prop_lut2_I1_O)        0.301     3.305 r  VSYNC/multOp__25_carry__0_i_2/O
-                         net (fo=1, routed)           0.000     3.305    pxlgen/mem_i_23_0[2]
-    SLICE_X31Y81         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.398     3.703 r  pxlgen/multOp__25_carry__0/CO[3]
-                         net (fo=1, routed)           0.000     3.703    pxlgen/multOp__25_carry__0_n_0
-    SLICE_X31Y82         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     3.925 r  pxlgen/multOp__25_carry__1/O[0]
-                         net (fo=1, routed)           0.495     4.420    pxlgen/multOp[11]
-    SLICE_X33Y81         CARRY4 (Prop_carry4_S[3]_CO[3])
-                                                      0.700     5.120 r  pxlgen/mem_i_22/CO[3]
-                         net (fo=1, routed)           0.000     5.120    pxlgen/mem_i_22_n_0
-    SLICE_X33Y82         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.334     5.454 f  pxlgen/mem_i_21/O[1]
-                         net (fo=1, routed)           0.598     6.052    VSYNC/addr0[9]
-    SLICE_X34Y82         LUT6 (Prop_lut6_I5_O)        0.303     6.355 f  VSYNC/mem_i_4/O
-                         net (fo=44, routed)          6.070    12.425    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_init.ram/addra[13]
-    SLICE_X48Y42         LUT5 (Prop_lut5_I1_O)        0.124    12.549 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_i_1__26/O
-                         net (fo=1, routed)           0.551    13.100    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_init.ram/ramloop[12].ram.ram_ena
-    RAMB36_X1Y8          RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[12].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        13.014ns  (logic 3.804ns (29.229%)  route 9.210ns (70.771%))
-  Logic Levels:           10  (CARRY4=5 FDRE=1 LUT2=2 LUT5=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.852     5.722 r  pxlgen/mem_i_21/CO[3]
-                         net (fo=1, routed)           0.000     5.722    pxlgen/mem_i_21_n_0
-    SLICE_X33Y83         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     5.944 f  pxlgen/mem_i_20/O[0]
-                         net (fo=1, routed)           0.952     6.895    VSYNC/addr0[12]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.299     7.194 f  VSYNC/mem_i_1/O
-                         net (fo=42, routed)          5.354    12.548    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_init.ram/addra[16]
-    SLICE_X8Y87          LUT5 (Prop_lut5_I4_O)        0.124    12.672 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_i_1__13/O
-                         net (fo=1, routed)           0.343    13.014    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_init.ram/ramloop[17].ram.ram_ena
-    RAMB36_X0Y17         RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[17].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        12.985ns  (logic 3.804ns (29.296%)  route 9.181ns (70.704%))
-  Logic Levels:           10  (CARRY4=5 FDRE=1 LUT2=2 LUT5=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.852     5.722 r  pxlgen/mem_i_21/CO[3]
-                         net (fo=1, routed)           0.000     5.722    pxlgen/mem_i_21_n_0
-    SLICE_X33Y83         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.222     5.944 f  pxlgen/mem_i_20/O[0]
-                         net (fo=1, routed)           0.952     6.895    VSYNC/addr0[12]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.299     7.194 f  VSYNC/mem_i_1/O
-                         net (fo=42, routed)          5.324    12.518    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_init.ram/addra[16]
-    SLICE_X8Y82          LUT5 (Prop_lut5_I4_O)        0.124    12.642 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_i_1__15/O
-                         net (fo=1, routed)           0.343    12.985    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_init.ram/ramloop[15].ram.ram_ena
-    RAMB36_X0Y16         RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/Q
+                         net (fo=38, routed)          5.057     5.513    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[3]
+    SLICE_X8Y23          MUXF7 (Prop_muxf7_S_O)       0.314     5.827 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[7]_INST_0_i_2/O
+                         net (fo=1, routed)           2.767     8.593    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[7]_INST_0_i_2_n_0
+    SLICE_X49Y54         LUT6 (Prop_lut6_I1_O)        0.298     8.891 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[7]_INST_0/O
+                         net (fo=1, routed)           1.661    10.553    VSYNC/douta[7]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.152    10.705 r  VSYNC/VGA_B3_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.688    13.393    VGA_B3_OBUF
+    D8                   OBUF (Prop_obuf_I_O)         3.766    17.159 r  VGA_B3_OBUF_inst/O
+                         net (fo=0)                   0.000    17.159    VGA_B3
+    D8                                                                r  VGA_B3 (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
                             (rising edge-triggered cell FDRE)
+  Destination:            VGA_B0
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        16.707ns  (logic 4.804ns (28.752%)  route 11.904ns (71.248%))
+  Logic Levels:           6  (FDRE=1 LUT4=1 LUT6=2 MUXF7=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
+                         net (fo=74, routed)          4.959     5.415    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
+    SLICE_X8Y20          LUT6 (Prop_lut6_I2_O)        0.124     5.539 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[4]_INST_0_i_7/O
+                         net (fo=1, routed)           0.000     5.539    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[4]_INST_0_i_7_n_0
+    SLICE_X8Y20          MUXF7 (Prop_muxf7_I0_O)      0.241     5.780 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[4]_INST_0_i_2/O
+                         net (fo=1, routed)           2.740     8.520    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[4]_INST_0_i_2_n_0
+    SLICE_X48Y54         LUT6 (Prop_lut6_I1_O)        0.298     8.818 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[4]_INST_0/O
+                         net (fo=1, routed)           1.478    10.296    VSYNC/douta[4]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.124    10.420 r  VSYNC/VGA_B0_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.726    13.147    VGA_B0_OBUF
+    B7                   OBUF (Prop_obuf_I_O)         3.561    16.707 r  VGA_B0_OBUF_inst/O
+                         net (fo=0)                   0.000    16.707    VGA_B0
+    B7                                                                r  VGA_B0 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            VGA_G3
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        16.631ns  (logic 4.961ns (29.831%)  route 11.670ns (70.169%))
+  Logic Levels:           5  (FDRE=1 LUT4=1 LUT6=1 MUXF7=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/Q
+                         net (fo=38, routed)          4.734     5.190    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[3]
+    SLICE_X8Y22          MUXF7 (Prop_muxf7_S_O)       0.292     5.482 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[3]_INST_0_i_2/O
+                         net (fo=1, routed)           2.720     8.202    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[3]_INST_0_i_2_n_0
+    SLICE_X48Y56         LUT6 (Prop_lut6_I1_O)        0.297     8.499 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[3]_INST_0/O
+                         net (fo=1, routed)           1.497     9.996    VSYNC/douta[3]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.153    10.149 r  VSYNC/VGA_G3_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.719    12.868    VGA_G3_OBUF
+    A6                   OBUF (Prop_obuf_I_O)         3.763    16.631 r  VGA_G3_OBUF_inst/O
+                         net (fo=0)                   0.000    16.631    VGA_G3
+    A6                                                                r  VGA_G3 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            VGA_G2
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        16.584ns  (logic 4.774ns (28.789%)  route 11.810ns (71.211%))
+  Logic Levels:           6  (FDRE=1 LUT4=1 LUT6=2 MUXF7=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
+                         net (fo=74, routed)          5.152     5.608    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
+    SLICE_X8Y20          LUT6 (Prop_lut6_I2_O)        0.124     5.732 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_8/O
+                         net (fo=1, routed)           0.000     5.732    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_8_n_0
+    SLICE_X8Y20          MUXF7 (Prop_muxf7_I1_O)      0.214     5.946 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_2/O
+                         net (fo=1, routed)           2.313     8.259    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_2_n_0
+    SLICE_X48Y56         LUT6 (Prop_lut6_I1_O)        0.297     8.556 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0/O
+                         net (fo=1, routed)           1.646    10.202    VSYNC/douta[2]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.124    10.326 r  VSYNC/VGA_G2_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.699    13.025    VGA_G2_OBUF
+    B6                   OBUF (Prop_obuf_I_O)         3.559    16.584 r  VGA_G2_OBUF_inst/O
+                         net (fo=0)                   0.000    16.584    VGA_G2
+    B6                                                                r  VGA_G2 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/C
+                            (rising edge-triggered cell FDRE)
   Destination:            VGA_B1
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        12.814ns  (logic 4.649ns (36.283%)  route 8.164ns (63.717%))
-  Logic Levels:           5  (FDRE=1 LUT6=2 MUXF7=1 OBUF=1)
+  Data Path Delay:        16.486ns  (logic 4.923ns (29.863%)  route 11.563ns (70.137%))
+  Logic Levels:           5  (FDRE=1 LUT4=1 LUT6=1 MUXF7=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
-    SLICE_X36Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
-                         net (fo=74, routed)          3.333     3.789    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
-    SLICE_X48Y40         LUT6 (Prop_lut6_I2_O)        0.124     3.913 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_11/O
-                         net (fo=1, routed)           0.000     3.913    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_11_n_0
-    SLICE_X48Y40         MUXF7 (Prop_muxf7_I0_O)      0.212     4.125 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_4/O
-                         net (fo=1, routed)           2.218     6.343    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0_i_4_n_0
-    SLICE_X48Y74         LUT6 (Prop_lut6_I5_O)        0.299     6.642 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[2]_INST_0/O
-                         net (fo=1, routed)           2.613     9.255    VGA_B1_OBUF
-    C7                   OBUF (Prop_obuf_I_O)         3.558    12.814 r  VGA_B1_OBUF_inst/O
-                         net (fo=0)                   0.000    12.814    VGA_B1
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]/Q
+                         net (fo=38, routed)          4.685     5.141    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[3]
+    SLICE_X8Y23          MUXF7 (Prop_muxf7_S_O)       0.292     5.433 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[5]_INST_0_i_2/O
+                         net (fo=1, routed)           2.707     8.140    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[5]_INST_0_i_2_n_0
+    SLICE_X48Y54         LUT6 (Prop_lut6_I1_O)        0.297     8.437 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[5]_INST_0/O
+                         net (fo=1, routed)           1.630    10.068    VSYNC/douta[5]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.118    10.186 r  VSYNC/VGA_B1_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.540    12.726    VGA_B1_OBUF
+    C7                   OBUF (Prop_obuf_I_O)         3.760    16.486 r  VGA_B1_OBUF_inst/O
+                         net (fo=0)                   0.000    16.486    VGA_B1
     C7                                                                r  VGA_B1 (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            VGA_G1
+  Destination:            VGA_R1
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        12.767ns  (logic 4.653ns (36.442%)  route 8.115ns (63.558%))
-  Logic Levels:           5  (FDRE=1 LUT6=2 MUXF7=1 OBUF=1)
+  Data Path Delay:        16.244ns  (logic 5.039ns (31.018%)  route 11.206ns (68.982%))
+  Logic Levels:           6  (FDRE=1 LUT4=1 LUT6=2 MUXF7=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
-    SLICE_X36Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
-                         net (fo=74, routed)          3.328     3.784    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
-    SLICE_X49Y40         LUT6 (Prop_lut6_I2_O)        0.124     3.908 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_12/O
-                         net (fo=1, routed)           0.000     3.908    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_12_n_0
-    SLICE_X49Y40         MUXF7 (Prop_muxf7_I1_O)      0.217     4.125 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_4/O
-                         net (fo=1, routed)           2.055     6.180    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_4_n_0
-    SLICE_X49Y75         LUT6 (Prop_lut6_I5_O)        0.299     6.479 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0/O
-                         net (fo=1, routed)           2.731     9.211    VGA_G1_OBUF
-    A5                   OBUF (Prop_obuf_I_O)         3.557    12.767 r  VGA_G1_OBUF_inst/O
-                         net (fo=0)                   0.000    12.767    VGA_G1
-    A5                                                                r  VGA_G1 (OUT)
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
+                         net (fo=74, routed)          4.654     5.110    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
+    SLICE_X8Y22          LUT6 (Prop_lut6_I2_O)        0.124     5.234 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[9]_INST_0_i_7/O
+                         net (fo=1, routed)           0.000     5.234    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[9]_INST_0_i_7_n_0
+    SLICE_X8Y22          MUXF7 (Prop_muxf7_I0_O)      0.241     5.475 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[9]_INST_0_i_2/O
+                         net (fo=1, routed)           2.402     7.877    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[9]_INST_0_i_2_n_0
+    SLICE_X48Y53         LUT6 (Prop_lut6_I1_O)        0.298     8.175 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[9]_INST_0/O
+                         net (fo=1, routed)           1.821     9.996    VSYNC/douta[9]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.149    10.145 r  VSYNC/VGA_R1_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.329    12.474    VGA_R1_OBUF
+    B4                   OBUF (Prop_obuf_I_O)         3.771    16.244 r  VGA_R1_OBUF_inst/O
+                         net (fo=0)                   0.000    16.244    VGA_R1
+    B4                                                                r  VGA_R1 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            VGA_B2
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        15.864ns  (logic 4.764ns (30.028%)  route 11.100ns (69.972%))
+  Logic Levels:           6  (FDRE=1 LUT4=1 LUT6=2 MUXF7=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
+                         net (fo=74, routed)          4.955     5.411    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
+    SLICE_X9Y20          LUT6 (Prop_lut6_I2_O)        0.124     5.535 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_8/O
+                         net (fo=1, routed)           0.000     5.535    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_8_n_0
+    SLICE_X9Y20          MUXF7 (Prop_muxf7_I1_O)      0.217     5.752 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_2/O
+                         net (fo=1, routed)           2.416     8.168    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0_i_2_n_0
+    SLICE_X48Y53         LUT6 (Prop_lut6_I1_O)        0.299     8.467 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[6]_INST_0/O
+                         net (fo=1, routed)           1.392     9.859    VSYNC/douta[6]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.124     9.983 r  VSYNC/VGA_B2_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.337    12.320    VGA_B2_OBUF
+    D7                   OBUF (Prop_obuf_I_O)         3.544    15.864 r  VGA_B2_OBUF_inst/O
+                         net (fo=0)                   0.000    15.864    VGA_B2
+    D7                                                                r  VGA_B2 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            VGA_R2
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        15.815ns  (logic 4.759ns (30.093%)  route 11.056ns (69.907%))
+  Logic Levels:           6  (FDRE=1 LUT4=1 LUT6=2 MUXF7=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
+                         net (fo=74, routed)          4.557     5.013    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I2_O)        0.124     5.137 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[10]_INST_0_i_8/O
+                         net (fo=1, routed)           0.000     5.137    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[10]_INST_0_i_8_n_0
+    SLICE_X8Y21          MUXF7 (Prop_muxf7_I1_O)      0.214     5.351 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[10]_INST_0_i_2/O
+                         net (fo=1, routed)           2.565     7.916    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[10]_INST_0_i_2_n_0
+    SLICE_X48Y57         LUT6 (Prop_lut6_I1_O)        0.297     8.213 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[10]_INST_0/O
+                         net (fo=1, routed)           1.350     9.562    VSYNC/douta[10]
+    SLICE_X48Y80         LUT4 (Prop_lut4_I3_O)        0.124     9.686 r  VSYNC/VGA_R2_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.585    12.271    VGA_R2_OBUF
+    C5                   OBUF (Prop_obuf_I_O)         3.544    15.815 r  VGA_R2_OBUF_inst/O
+                         net (fo=0)                   0.000    15.815    VGA_R2
+    C5                                                                r  VGA_R2 (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            VGA_R0
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        15.761ns  (logic 4.810ns (30.517%)  route 10.951ns (69.483%))
+  Logic Levels:           6  (FDRE=1 LUT4=1 LUT6=2 MUXF7=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X39Y73         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/C
+    SLICE_X39Y73         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/Q
+                         net (fo=74, routed)          4.571     5.027    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe_d1[2]
+    SLICE_X8Y21          LUT6 (Prop_lut6_I2_O)        0.124     5.151 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[8]_INST_0_i_7/O
+                         net (fo=1, routed)           0.000     5.151    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[8]_INST_0_i_7_n_0
+    SLICE_X8Y21          MUXF7 (Prop_muxf7_I0_O)      0.241     5.392 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[8]_INST_0_i_2/O
+                         net (fo=1, routed)           2.506     7.898    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[8]_INST_0_i_2_n_0
+    SLICE_X49Y55         LUT6 (Prop_lut6_I1_O)        0.298     8.196 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/douta[8]_INST_0/O
+                         net (fo=1, routed)           1.566     9.762    VSYNC/douta[8]
+    SLICE_X48Y79         LUT4 (Prop_lut4_I3_O)        0.124     9.886 r  VSYNC/VGA_R0_OBUF_inst_i_1/O
+                         net (fo=1, routed)           2.308    12.194    VGA_R0_OBUF
+    A3                   OBUF (Prop_obuf_I_O)         3.567    15.761 r  VGA_R0_OBUF_inst/O
+                         net (fo=0)                   0.000    15.761    VGA_R0
+    A3                                                                r  VGA_R0 (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 VSYNC/sig_count_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
+  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        12.752ns  (logic 3.615ns (28.348%)  route 9.137ns (71.652%))
-  Logic Levels:           9  (CARRY4=4 FDRE=1 LUT2=2 LUT5=1 LUT6=1)
+  Data Path Delay:        13.199ns  (logic 3.708ns (28.093%)  route 9.491ns (71.907%))
+  Logic Levels:           11  (CARRY4=6 FDRE=1 LUT2=2 LUT4=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          1.165     1.584    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X30Y80         LUT2 (Prop_lut2_I1_O)        0.299     1.883 r  VSYNC/multOp_carry_i_2/O
-                         net (fo=1, routed)           0.000     1.883    pxlgen/multOp__25_carry__0_i_4[1]
-    SLICE_X30Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
-                                                      0.380     2.263 r  pxlgen/multOp_carry/CO[3]
-                         net (fo=1, routed)           0.000     2.263    pxlgen/multOp_carry_n_0
-    SLICE_X30Y81         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.586 r  pxlgen/multOp_carry__0/O[1]
-                         net (fo=1, routed)           0.812     3.398    VSYNC/multOp__25_carry__1[1]
-    SLICE_X31Y82         LUT2 (Prop_lut2_I1_O)        0.306     3.704 r  VSYNC/multOp__25_carry__1_i_1/O
-                         net (fo=1, routed)           0.000     3.704    pxlgen/mem_i_22_1[1]
-    SLICE_X31Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.580     4.284 r  pxlgen/multOp__25_carry__1/O[2]
-                         net (fo=1, routed)           0.586     4.870    pxlgen/multOp[13]
-    SLICE_X33Y82         CARRY4 (Prop_carry4_S[1]_O[2])
-                                                      0.882     5.752 f  pxlgen/mem_i_21/O[2]
-                         net (fo=1, routed)           0.850     6.602    VSYNC/addr0[10]
-    SLICE_X32Y82         LUT6 (Prop_lut6_I5_O)        0.302     6.904 f  VSYNC/mem_i_3/O
-                         net (fo=43, routed)          5.283    12.187    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_init.ram/addra[14]
-    SLICE_X58Y42         LUT5 (Prop_lut5_I1_O)        0.124    12.311 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_i_1__22/O
-                         net (fo=1, routed)           0.441    12.752    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_init.ram/ramloop[8].ram.ram_ena
-    RAMB36_X2Y8          RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
+    SLICE_X36Y79         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
+    SLICE_X36Y79         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  VSYNC/sig_count_reg[3]/Q
+                         net (fo=13, routed)          1.180     1.636    VSYNC/sig_count_reg[9]_0[2]
+    SLICE_X39Y80         LUT2 (Prop_lut2_I1_O)        0.124     1.760 r  VSYNC/multOp_carry_i_2/O
+                         net (fo=1, routed)           0.000     1.760    pxlgen/multOp__25_carry__0_i_4[1]
+    SLICE_X39Y80         CARRY4 (Prop_carry4_S[2]_CO[3])
+                                                      0.398     2.158 r  pxlgen/multOp_carry/CO[3]
+                         net (fo=1, routed)           0.000     2.158    pxlgen/multOp_carry_n_0
+    SLICE_X39Y81         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.334     2.492 r  pxlgen/multOp_carry__0/O[1]
+                         net (fo=1, routed)           0.799     3.291    VSYNC/multOp__25_carry__1[1]
+    SLICE_X38Y81         LUT2 (Prop_lut2_I1_O)        0.303     3.594 r  VSYNC/multOp__25_carry__1_i_1/O
+                         net (fo=1, routed)           0.000     3.594    pxlgen/mem_i_20_1[1]
+    SLICE_X38Y81         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533     4.127 r  pxlgen/multOp__25_carry__1/CO[3]
+                         net (fo=1, routed)           0.000     4.127    pxlgen/multOp__25_carry__1_n_0
+    SLICE_X38Y82         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.219     4.346 r  pxlgen/multOp__25_carry__2/O[0]
+                         net (fo=1, routed)           0.454     4.800    pxlgen/multOp[15]
+    SLICE_X40Y81         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.696     5.496 r  pxlgen/mem_i_19/CO[3]
+                         net (fo=1, routed)           0.000     5.496    pxlgen/mem_i_19_n_0
+    SLICE_X40Y82         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.222     5.718 r  pxlgen/mem_i_18/O[0]
+                         net (fo=1, routed)           0.810     6.528    VSYNC/addr0[12]
+    SLICE_X41Y80         LUT4 (Prop_lut4_I3_O)        0.299     6.827 r  VSYNC/mem_i_1/O
+                         net (fo=42, routed)          5.503    12.330    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_init.ram/addra[16]
+    SLICE_X8Y7           LUT5 (Prop_lut5_I4_O)        0.124    12.454 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram_i_1__8/O
+                         net (fo=1, routed)           0.745    13.199    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_init.ram/ramloop[30].ram.ram_ena
+    RAMB36_X0Y0          RAMB36E1                                     r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[30].ram.r/prim_init.ram/DEVICE_7SERIES.NO_BMM_INFO.SP.SIMPLE_PRIM36.ram/ENARDEN
   -------------------------------------------------------------------    -------------------
 
 
@@ -586,185 +521,179 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[5]/C
+  Source:                 eth/n1385/n747_reg[9]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[5]/D
+  Destination:            eth/n1385/n747_reg[7]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.279ns  (logic 0.141ns (50.605%)  route 0.138ns (49.395%))
+  Data Path Delay:        0.187ns  (logic 0.128ns (68.470%)  route 0.059ns (31.530%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y74         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[5]/C
-    SLICE_X36Y74         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[5]/Q
-                         net (fo=40, routed)          0.138     0.279    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe[5]
-    SLICE_X36Y73         FDRE                                         r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[5]/D
+    SLICE_X1Y52          FDRE                         0.000     0.000 r  eth/n1385/n747_reg[9]/C
+    SLICE_X1Y52          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  eth/n1385/n747_reg[9]/Q
+                         net (fo=2, routed)           0.059     0.187    eth/n1385/n747[9]
+    SLICE_X0Y52          FDRE                                         r  eth/n1385/n747_reg[7]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[2]/C
+  Source:                 eth/n1385/n747_reg[6]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/D
+  Destination:            eth/n1385/n747_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.280ns  (logic 0.141ns (50.304%)  route 0.139ns (49.696%))
+  Data Path Delay:        0.205ns  (logic 0.128ns (62.517%)  route 0.077ns (37.483%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y74         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[2]/C
-    SLICE_X36Y74         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[2]/Q
-                         net (fo=32, routed)          0.139     0.280    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe[2]
-    SLICE_X36Y73         FDRE                                         r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]/D
+    SLICE_X1Y52          FDRE                         0.000     0.000 r  eth/n1385/n747_reg[6]/C
+    SLICE_X1Y52          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  eth/n1385/n747_reg[6]/Q
+                         net (fo=2, routed)           0.077     0.205    eth/n1385/n747[6]
+    SLICE_X0Y52          FDRE                                         r  eth/n1385/n747_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[9]/C
+  Source:                 eth/n1383/n688/n713_reg[8]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            VSYNC/sig_count_reg[0]/D
+  Destination:            eth/n1383/n688/n713_reg[16]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.313ns  (logic 0.186ns (59.347%)  route 0.127ns (40.653%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X29Y82         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[9]/C
-    SLICE_X29Y82         FDRE (Prop_fdre_C_Q)         0.141     0.141 f  VSYNC/sig_count_reg[9]/Q
-                         net (fo=23, routed)          0.127     0.268    VSYNC/sig_count_reg[9]_0[8]
-    SLICE_X29Y81         LUT6 (Prop_lut6_I4_O)        0.045     0.313 r  VSYNC/sig_count[0]_i_1__0/O
-                         net (fo=1, routed)           0.000     0.313    VSYNC/sig_count[0]
-    SLICE_X29Y81         FDRE                                         r  VSYNC/sig_count_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.317ns  (logic 0.141ns (44.418%)  route 0.176ns (55.582%))
+  Data Path Delay:        0.214ns  (logic 0.128ns (59.720%)  route 0.086ns (40.280%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X49Y81         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[0]/C
-    SLICE_X49Y81         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[0]/Q
-                         net (fo=1, routed)           0.176     0.317    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe[0]
-    SLICE_X49Y81         FDRE                                         r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[0]/D
+    SLICE_X7Y39          FDRE                         0.000     0.000 r  eth/n1383/n688/n713_reg[8]/C
+    SLICE_X7Y39          FDRE (Prop_fdre_C_Q)         0.128     0.128 r  eth/n1383/n688/n713_reg[8]/Q
+                         net (fo=3, routed)           0.086     0.214    eth/n1383/n688/n713[8]
+    SLICE_X7Y39          FDRE                                         r  eth/n1383/n688/n713_reg[16]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[3]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            VSYNC/sig_count_reg[5]/D
+  Source:                 ETH_RXD[1]
+                            (input port)
+  Destination:            eth/n1385/n918/n553/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.328ns  (logic 0.227ns (69.281%)  route 0.101ns (30.719%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
+  Data Path Delay:        0.235ns  (logic 0.235ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           1  (IBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y83         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[3]/C
-    SLICE_X29Y83         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  VSYNC/sig_count_reg[3]/Q
-                         net (fo=14, routed)          0.101     0.229    VSYNC/sig_count_reg[9]_0[2]
-    SLICE_X29Y83         LUT6 (Prop_lut6_I3_O)        0.099     0.328 r  VSYNC/sig_count[5]_i_1__0/O
-                         net (fo=1, routed)           0.000     0.328    VSYNC/sig_count[5]_i_1__0_n_0
-    SLICE_X29Y83         FDRE                                         r  VSYNC/sig_count_reg[5]/D
+    D10                                               0.000     0.000 r  ETH_RXD[1] (IN)
+                         net (fo=0)                   0.000     0.000    ETH_RXD[1]
+    D10                  IBUF (Prop_ibuf_I_O)         0.235     0.235 r  ETH_RXD_IBUF[1]_inst/O
+                         net (fo=1, routed)           0.000     0.235    eth/RMII_RXD1
+    ILOGIC_X0Y111        IDDR                                         r  eth/n1385/n918/n553/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[1]/D
+  Source:                 ETH_CRSDV
+                            (input port)
+  Destination:            eth/n1385/n919/n553/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.340ns  (logic 0.164ns (48.174%)  route 0.176ns (51.826%))
+  Data Path Delay:        0.235ns  (logic 0.235ns (100.000%)  route 0.000ns (0.000%))
+  Logic Levels:           1  (IBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    D9                                                0.000     0.000 r  ETH_CRSDV (IN)
+                         net (fo=0)                   0.000     0.000    ETH_CRSDV
+    D9                   IBUF (Prop_ibuf_I_O)         0.235     0.235 r  ETH_CRSDV_IBUF_inst/O
+                         net (fo=1, routed)           0.000     0.235    eth/RMII_CRS_DV
+    ILOGIC_X0Y137        IDDR                                         r  eth/n1385/n919/n553/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 eth/n1383/n654_reg[n5][12]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            eth/n1384/n248_reg[12]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.240ns  (logic 0.141ns (58.795%)  route 0.099ns (41.205%))
   Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X38Y76         FDRE                         0.000     0.000 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[1]/C
-    SLICE_X38Y76         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[1]/Q
-                         net (fo=1, routed)           0.176     0.340    pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/sel_pipe[1]
-    SLICE_X38Y76         FDRE                                         r  pxlgen/mem/U0/inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[1]/D
+    SLICE_X0Y42          FDRE                         0.000     0.000 r  eth/n1383/n654_reg[n5][12]/C
+    SLICE_X0Y42          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  eth/n1383/n654_reg[n5][12]/Q
+                         net (fo=2, routed)           0.099     0.240    eth/n1354[n55][n30][n5][12]
+    SLICE_X1Y42          FDRE                                         r  eth/n1384/n248_reg[12]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 VSYNC/sig_count_reg[7]/C
+  Source:                 eth/n1385/n922_reg[3]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            VSYNC/sig_count_reg[8]/D
+  Destination:            eth/n1385/n925_reg[2]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.355ns  (logic 0.227ns (64.002%)  route 0.128ns (35.998%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
+  Data Path Delay:        0.248ns  (logic 0.186ns (74.990%)  route 0.062ns (25.010%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y82         FDRE                         0.000     0.000 r  VSYNC/sig_count_reg[7]/C
-    SLICE_X29Y82         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  VSYNC/sig_count_reg[7]/Q
-                         net (fo=11, routed)          0.128     0.256    VSYNC/sig_count_reg[9]_0[6]
-    SLICE_X29Y82         LUT6 (Prop_lut6_I4_O)        0.099     0.355 r  VSYNC/sig_count[8]_i_1__0/O
-                         net (fo=1, routed)           0.000     0.355    VSYNC/sig_count[8]_i_1__0_n_0
-    SLICE_X29Y82         FDRE                                         r  VSYNC/sig_count_reg[8]/D
+    SLICE_X0Y112         FDRE                         0.000     0.000 r  eth/n1385/n922_reg[3]/C
+    SLICE_X0Y112         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  eth/n1385/n922_reg[3]/Q
+                         net (fo=2, routed)           0.062     0.203    eth/n1385/p_1_in1_in
+    SLICE_X1Y112         LUT5 (Prop_lut5_I1_O)        0.045     0.248 r  eth/n1385/n925[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.248    eth/n1385/n925[2]_i_1_n_0
+    SLICE_X1Y112         FDRE                                         r  eth/n1385/n925_reg[2]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 CLOCK_DIV/sig_count_reg[0]/C
+  Source:                 eth/n1385/n747_reg[12]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            CLOCK_DIV/sig_counter_end_reg/D
+  Destination:            eth/n1385/n747_reg[10]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.357ns  (logic 0.184ns (51.572%)  route 0.173ns (48.428%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.251ns  (logic 0.141ns (56.158%)  route 0.110ns (43.842%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y80         FDRE                         0.000     0.000 r  CLOCK_DIV/sig_count_reg[0]/C
-    SLICE_X36Y80         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  CLOCK_DIV/sig_count_reg[0]/Q
-                         net (fo=4, routed)           0.173     0.314    CLOCK_DIV/sig_count_reg_n_0_[0]
-    SLICE_X36Y80         LUT3 (Prop_lut3_I1_O)        0.043     0.357 r  CLOCK_DIV/sig_counter_end_i_1/O
-                         net (fo=1, routed)           0.000     0.357    CLOCK_DIV/sig_counter_end_i_1_n_0
-    SLICE_X36Y80         FDRE                                         r  CLOCK_DIV/sig_counter_end_reg/D
+    SLICE_X0Y52          FDRE                         0.000     0.000 r  eth/n1385/n747_reg[12]/C
+    SLICE_X0Y52          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  eth/n1385/n747_reg[12]/Q
+                         net (fo=3, routed)           0.110     0.251    eth/n1385/n747[12]
+    SLICE_X1Y52          FDRE                                         r  eth/n1385/n747_reg[10]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 CLOCK_DIV/sig_count_reg[0]/C
+  Source:                 eth/n1383/n654_reg[n5][44]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            CLOCK_DIV/sig_count_reg[2]/D
+  Destination:            eth/n389/n379/hasBuffer.n248_reg[44]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.359ns  (logic 0.186ns (51.842%)  route 0.173ns (48.158%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.254ns  (logic 0.148ns (58.220%)  route 0.106ns (41.780%))
+  Logic Levels:           1  (FDRE=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y80         FDRE                         0.000     0.000 r  CLOCK_DIV/sig_count_reg[0]/C
-    SLICE_X36Y80         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  CLOCK_DIV/sig_count_reg[0]/Q
-                         net (fo=4, routed)           0.173     0.314    CLOCK_DIV/sig_count_reg_n_0_[0]
-    SLICE_X36Y80         LUT3 (Prop_lut3_I1_O)        0.045     0.359 r  CLOCK_DIV/sig_count[2]_i_1__1/O
-                         net (fo=1, routed)           0.000     0.359    CLOCK_DIV/sig_count[2]_i_1__1_n_0
-    SLICE_X36Y80         FDRE                                         r  CLOCK_DIV/sig_count_reg[2]/D
+    SLICE_X2Y45          FDRE                         0.000     0.000 r  eth/n1383/n654_reg[n5][44]/C
+    SLICE_X2Y45          FDRE (Prop_fdre_C_Q)         0.148     0.148 r  eth/n1383/n654_reg[n5][44]/Q
+                         net (fo=2, routed)           0.106     0.254    eth/n1354[n55][n30][n5][44]
+    SLICE_X0Y44          FDRE                                         r  eth/n389/n379/hasBuffer.n248_reg[44]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 CLOCK_DIV/sig_count_reg[0]/C
+  Source:                 eth/n1383/n688/n754_reg[9]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            CLOCK_DIV/sig_count_reg[1]/D
+  Destination:            eth/n1383/n688/n732_reg[9]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.367ns  (logic 0.183ns (49.904%)  route 0.184ns (50.096%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Data Path Delay:        0.255ns  (logic 0.186ns (72.817%)  route 0.069ns (27.183%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y80         FDRE                         0.000     0.000 r  CLOCK_DIV/sig_count_reg[0]/C
-    SLICE_X36Y80         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  CLOCK_DIV/sig_count_reg[0]/Q
-                         net (fo=4, routed)           0.184     0.325    CLOCK_DIV/sig_count_reg_n_0_[0]
-    SLICE_X36Y80         LUT3 (Prop_lut3_I1_O)        0.042     0.367 r  CLOCK_DIV/sig_count[1]_i_1__1/O
-                         net (fo=1, routed)           0.000     0.367    CLOCK_DIV/sig_count[1]_i_1__1_n_0
-    SLICE_X36Y80         FDRE                                         r  CLOCK_DIV/sig_count_reg[1]/D
+    SLICE_X5Y42          FDRE                         0.000     0.000 r  eth/n1383/n688/n754_reg[9]/C
+    SLICE_X5Y42          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  eth/n1383/n688/n754_reg[9]/Q
+                         net (fo=2, routed)           0.069     0.210    eth/n1383/n688/n754_reg_n_0_[9]
+    SLICE_X4Y42          LUT4 (Prop_lut4_I2_O)        0.045     0.255 r  eth/n732[9]_i_1__0/O
+                         net (fo=1, routed)           0.000     0.255    eth/n732[9]_i_1__0_n_0
+    SLICE_X4Y42          FDRE                                         r  eth/n1383/n688/n732_reg[9]/D
   -------------------------------------------------------------------    -------------------
 
 

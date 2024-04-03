@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Fri Mar 22 10:37:19 2024
-# Process ID: 7000
-# Current directory: C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.runs/impl_1
+# Start of session at: Wed Apr  3 11:31:48 2024
+# Process ID: 23100
+# Current directory: C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/impl_1
 # Command line: vivado.exe -log toplevel.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source toplevel.tcl -notrace
-# Log file: C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.runs/impl_1/toplevel.vdi
-# Journal file: C:/Users/Mara/Documents/Vivado projects/First_test_project/First_test_project.runs/impl_1\vivado.jou
+# Log file: C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/impl_1/toplevel.vdi
+# Journal file: C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/impl_1\vivado.jou
 # Running On: MARABOOK2, OS: Windows, CPU Frequency: 1996 MHz, CPU Physical cores: 8, Host memory: 42118 MB
 #-----------------------------------------------------------
 source toplevel.tcl -notrace

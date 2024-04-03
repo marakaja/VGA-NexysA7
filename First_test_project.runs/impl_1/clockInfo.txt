@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2023.2
-| Date         : Fri Mar 22 10:38:43 2024
+| Date         : Wed Apr  3 11:33:43 2024
 | Host         : MARABOOK2
 | Design       : design_1
 | Device       : xc7a50t-csg324-1--

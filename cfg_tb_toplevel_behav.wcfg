@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="cfg_tb_toplevel_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_toplevel" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="31.750001 us"></ZoomEndTime>
+      <Cursor1Time time="20.995000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="276"></NameColumnWidth>
+      <ValueColumnWidth column_width="120"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="group19" type="group">
+      <obj_property name="label">R</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_toplevel/VGA_R0" type="logic">
+         <obj_property name="ElementShortName">VGA_R0</obj_property>
+         <obj_property name="ObjectShortName">VGA_R0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_R1" type="logic">
+         <obj_property name="ElementShortName">VGA_R1</obj_property>
+         <obj_property name="ObjectShortName">VGA_R1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_R2" type="logic">
+         <obj_property name="ElementShortName">VGA_R2</obj_property>
+         <obj_property name="ObjectShortName">VGA_R2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_R3" type="logic">
+         <obj_property name="ElementShortName">VGA_R3</obj_property>
+         <obj_property name="ObjectShortName">VGA_R3</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group20" type="group">
+      <obj_property name="label">G</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_toplevel/VGA_G0" type="logic">
+         <obj_property name="ElementShortName">VGA_G0</obj_property>
+         <obj_property name="ObjectShortName">VGA_G0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_G1" type="logic">
+         <obj_property name="ElementShortName">VGA_G1</obj_property>
+         <obj_property name="ObjectShortName">VGA_G1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_G2" type="logic">
+         <obj_property name="ElementShortName">VGA_G2</obj_property>
+         <obj_property name="ObjectShortName">VGA_G2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_G3" type="logic">
+         <obj_property name="ElementShortName">VGA_G3</obj_property>
+         <obj_property name="ObjectShortName">VGA_G3</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group21" type="group">
+      <obj_property name="label">B</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="/tb_toplevel/VGA_B0" type="logic">
+         <obj_property name="ElementShortName">VGA_B0</obj_property>
+         <obj_property name="ObjectShortName">VGA_B0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_B1" type="logic">
+         <obj_property name="ElementShortName">VGA_B1</obj_property>
+         <obj_property name="ObjectShortName">VGA_B1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_B2" type="logic">
+         <obj_property name="ElementShortName">VGA_B2</obj_property>
+         <obj_property name="ObjectShortName">VGA_B2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/tb_toplevel/VGA_B3" type="logic">
+         <obj_property name="ElementShortName">VGA_B3</obj_property>
+         <obj_property name="ObjectShortName">VGA_B3</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/VGA_HS" type="logic">
+      <obj_property name="ElementShortName">VGA_HS</obj_property>
+      <obj_property name="ObjectShortName">VGA_HS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/VGA_VS" type="logic">
+      <obj_property name="ElementShortName">VGA_VS</obj_property>
+      <obj_property name="ObjectShortName">VGA_VS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/CLK100MHZ" type="logic">
+      <obj_property name="ElementShortName">CLK100MHZ</obj_property>
+      <obj_property name="ObjectShortName">CLK100MHZ</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/color" type="array">
+      <obj_property name="ElementShortName">color[11:0]</obj_property>
+      <obj_property name="ObjectShortName">color[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/row" type="array">
+      <obj_property name="ElementShortName">row[9:0]</obj_property>
+      <obj_property name="ObjectShortName">row[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/col" type="array">
+      <obj_property name="ElementShortName">col[9:0]</obj_property>
+      <obj_property name="ObjectShortName">col[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_toplevel/dut/endline" type="logic">
+      <obj_property name="ElementShortName">endline</obj_property>
+      <obj_property name="ObjectShortName">endline</obj_property>
+   </wvobject>
+</wave_config>

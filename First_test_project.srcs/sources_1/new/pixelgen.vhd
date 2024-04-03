@@ -40,6 +40,10 @@ entity pixelgen is
         pixel_data : out std_logic_vector(11 downto 0);
         row : in std_logic_vector(9 downto 0);
         col : in std_logic_vector(9 downto 0)
+
+        rx_data : in std_logic_vector(7 downto 0);
+        rx_data_valid : in std_logic;
+        rx_data_last : in std_logic
         );
 end pixelgen;
 
@@ -48,6 +52,13 @@ architecture Behavioral of pixelgen is
 signal pixel_address : std_logic_vector(16 downto 0);
 signal in_pixel_range : std_logic;
 signal addr : std_logic_vector(19 downto 0);
+signal pixel_out :  std_logic_vector(11 downto 0);
+
+signal writeAddr : std_logic_vector(16 downto 0) := (others => '0');
+signal writeData : std_logic_vector(11 downto 0) := (others => 0);
+signal writeEnable : std_logic := '0';
+
+signal byteCounter : integer := 0;
 
 component blk_mem_gen_0 IS
   PORT (
@@ -55,7 +66,10 @@ component blk_mem_gen_0 IS
     wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     addra : IN STD_LOGIC_VECTOR(16 DOWNTO 0);
     dina : IN STD_LOGIC_VECTOR(11 DOWNTO 0);
-    douta : OUT STD_LOGIC_VECTOR(11 DOWNTO 0)
+    clkb : IN STD_LOGIC;
+    enb : IN STD_LOGIC;
+    addrb : IN STD_LOGIC_VECTOR(16 DOWNTO 0);
+    doutb : OUT STD_LOGIC_VECTOR(11 DOWNTO 0) 
   );
 end component blk_mem_gen_0;
 
@@ -64,16 +78,46 @@ begin
 mem : component blk_mem_gen_0
     port map(
     clka => clk,
-    wea => "0",
-    addra => pixel_address,
-    dina => "000000000000",
-    douta => pixel_data
+    clkb => clk,
+
+    addrb => pixel_address,
+    doutb => pixel_out,
+
+    wea => writeEnable,
+    dina => writeData,
+    addra => writeAddr
     );
 
   addr  <=  std_logic_vector(400 * (unsigned(row)/2) + unsigned(col)) when (in_pixel_range = '1') else (others => '0');
+  pixel_data  <= pixel_out when (in_pixel_range = '1') else (others => '0');
+  
   pixel_address <= addr(16 downto 0);
 
-  in_pixel_range <= '1' when (unsigned (row) < 300 and unsigned (col) < 400) else '0';
+  in_pixel_range <= '1' when (unsigned (row) < 600 and unsigned (col) < 400) else '0';
+  
+  process(clk)
+  begin
+    if rising_edge(clk) then
+      if rx_data_valid = '1' then
+        writeEnable <= '1';
+        if byteCouter = 1 then
+          writeData <= writeAddr(11 downto 8) & rx_data;
+          writeAddr <= writeAddr + 1;
+        else
+          writeData <= (rx_data(3 downto 0) & x"00", );
+          byteCounter <= byteCounter + 1;
+        end if;
+        
+        
+      else
+        writeEnable <= '0';
+        byteCounter <= 0;
+
+      end if;
+
+
+    end if;
+  end process;
 
 
 

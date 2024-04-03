@@ -81,7 +81,7 @@ begin
     -- Assign internal register to output
     -- Note: unsigned--> std_logic vector
     count <= std_logic_vector(sig_count);
-    sync <= sig_sync;
+    sync <= not (sig_sync);
     counter_end <= sig_counter_end;
 
 end architecture behavioral;

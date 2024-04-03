@@ -183,7 +183,7 @@ eth : FC1001_RMII
         UDP0_OutIsEmpty => LED(5),
 
         UDP0_TxData => (others => '0'),
-        UDP0_TxValid => '1',
+        UDP0_TxValid => '0',
         UDP0_TxReady => LED(1),
         UDP0_TxLast => '1',
 

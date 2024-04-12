@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Apr  3 11:33:53 2024
+| Date         : Thu Apr 11 15:55:06 2024
 | Host         : MARABOOK2 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file toplevel_control_sets_placed.rpt
 | Design       : toplevel
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    65 |
-|    Minimum number of control sets                        |    65 |
+| Total control sets                                       |    71 |
+|    Minimum number of control sets                        |    71 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |   166 |
+| Unused register locations in slices containing registers |   162 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    65 |
+| Total control sets |    71 |
 | >= 0 to < 4        |     3 |
-| >= 4 to < 6        |    10 |
+| >= 4 to < 6        |    11 |
 | >= 6 to < 8        |     7 |
-| >= 8 to < 10       |    15 |
+| >= 8 to < 10       |    18 |
 | >= 10 to < 12      |     7 |
 | >= 12 to < 14      |     2 |
 | >= 14 to < 16      |     0 |
-| >= 16              |    21 |
+| >= 16              |    23 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,12 +58,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             314 |          135 |
+| No           | No                    | No                     |             316 |          144 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              99 |           44 |
-| Yes          | No                    | No                     |             857 |          291 |
+| No           | Yes                   | No                     |             129 |           52 |
+| Yes          | No                    | No                     |             877 |          295 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              84 |           27 |
+| Yes          | Yes                   | No                     |             124 |           38 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -73,71 +73,77 @@ Table of Contents
 +------------------------------+------------------------------------+--------------------------------+------------------+----------------+--------------+
 |         Clock Signal         |            Enable Signal           |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
 +------------------------------+------------------------------------+--------------------------------+------------------+----------------+--------------+
-|  CLK100MHZ_IBUF_BUFG         | eth/RMII_RST_N                     | eth/n662_i_1_n_0               |                1 |              2 |         2.00 |
 |  HSYNC/sig_counter_end_reg_0 |                                    |                                |                1 |              2 |         2.00 |
-|  CLOCK_DIV/counter_end       |                                    |                                |                2 |              3 |         1.50 |
-|  CLK100MHZ_IBUF_BUFG         |                                    | eth/n1381                      |                3 |              4 |         1.33 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n726[3]_i_1_n_0                |                                |                2 |              4 |         2.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n207_reg[1]__0_n_0       |                                |                1 |              4 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n731[3]_i_1_n_0                |                                |                2 |              4 |         2.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/FSM_sequential_n374[3]_i_1_n_0 |                                |                2 |              4 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/RMII_RST_N                     | eth/n662_i_1_n_0               |                2 |              2 |         1.00 |
+|  CLOCK_DIV/counter_end       |                                    |                                |                3 |              3 |         1.00 |
+|  CLK100MHZ_IBUF_BUFG         |                                    | eth/n1381                      |                4 |              4 |         1.00 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n720[9]_i_1_n_0                | eth/n720[10]_i_1_n_0           |                2 |              4 |         2.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n207_reg[1]__0_n_0       | eth/n728[6]_i_1_n_0            |                1 |              5 |         5.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n127[n37][n34][7]_i_1_n_0      |                                |                2 |              5 |         2.50 |
+|  CLK100MHZ_IBUF_BUFG         | eth/FSM_sequential_n374[3]_i_1_n_0 |                                |                2 |              4 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n726[3]_i_1_n_0                |                                |                1 |              4 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n731[3]_i_1_n_0                |                                |                2 |              4 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n207_reg[1]__0_n_0       |                                |                2 |              4 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | pxlgen/writeData[11]_i_1_n_0       |                                |                1 |              4 |         4.00 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n721[7]_i_2_n_0                | eth/n721[7]_i_1_n_0            |                2 |              5 |         2.50 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n732                | eth/n732[10]_i_1_n_0           |                3 |              5 |         1.67 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n732                | eth/n732[10]_i_1_n_0           |                1 |              5 |         5.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n207_reg[1]__0_n_0       | eth/n728[6]_i_1_n_0            |                1 |              5 |         5.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n127[n37][n34][7]_i_1_n_0      |                                |                3 |              5 |         1.67 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n624[n1]_i_1_n_0               |                                |                2 |              6 |         3.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n718[5]_i_1_n_0                |                                |                3 |              6 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n718[5]_i_1_n_0                |                                |                4 |              6 |         1.50 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n732                |                                |                2 |              7 |         3.50 |
 |  CLK100MHZ_IBUF_BUFG         |                                    | eth/n1383/clear                |                2 |              7 |         3.50 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n728[6]_i_1_n_0                |                                |                3 |              7 |         2.33 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n720[9]_i_1_n_0                |                                |                5 |              7 |         1.40 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n732[10]_i_1_n_0               |                                |                4 |              7 |         1.75 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n720[9]_i_1_n_0                |                                |                4 |              7 |         1.75 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n732                |                                |                4 |              7 |         1.75 |
-|  CLK100MHZ_IBUF_BUFG         |                                    | eth/n636[9]_i_1_n_0            |                3 |              8 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n733[7]_i_1__0_n_0             |                                |                5 |              8 |         1.60 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n715[7]_i_1_n_0                | eth/n715[15]_i_1_n_0           |                3 |              8 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n715[7]_i_1_n_0                |                                |                4 |              8 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n465[7]_i_1_n_0                |                                |                2 |              8 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n655[n14][7]_i_1_n_0           |                                |                3 |              8 |         2.67 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n711[7]_i_1_n_0                |                                |                3 |              8 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n465[7]_i_1_n_0                |                                |                8 |              8 |         1.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n655[n14][7]_i_1_n_0           |                                |                2 |              8 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n715[7]_i_1_n_0                |                                |                4 |              8 |         2.00 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n647[7]_i_1_n_0                |                                |                3 |              8 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n713                |                                |                2 |              8 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n788                |                                |                7 |              8 |         1.14 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n77[7]_i_1_n_0                 |                                |                4 |              8 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         |                                    | eth/n636[9]_i_1_n_0            |                4 |              8 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n715[7]_i_1_n_0                | eth/n715[15]_i_1_n_0           |                3 |              8 |         2.67 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n794[7]_i_1_n_0                |                                |                2 |              8 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | pxlgen/writeAddr[7]_i_1_n_0        |                                |                2 |              8 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | pxlgen/writeData[7]_i_2_n_0        | pxlgen/writeData[7]_i_1_n_0    |                3 |              8 |         2.67 |
+|  CLK100MHZ_IBUF_BUFG         | pxlgen/writeAddr[15]_i_1_n_0       |                                |                1 |              8 |         8.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n788                |                                |                4 |              8 |         2.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n713                |                                |                3 |              8 |         2.67 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n733[7]_i_1__0_n_0             |                                |                5 |              8 |         1.60 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n77[7]_i_1_n_0                 |                                |                2 |              8 |         4.00 |
 |  CLOCK_DIV/counter_end       |                                    | HSYNC/sig_count[9]_i_1_n_0     |                3 |              9 |         3.00 |
 |  HSYNC/sig_counter_end_reg_0 |                                    | VSYNC/sig_count[9]_i_1__0_n_0  |                3 |              9 |         3.00 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n1383/n668                     |                                |                3 |              9 |         3.00 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n393[10]_i_2_n_0               | eth/n389/n378/n393[10]_i_1_n_0 |                2 |             11 |         5.50 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n631[10]_i_1_n_0               |                                |                6 |             11 |         1.83 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n391[10]_i_1_n_0               |                                |                4 |             11 |         2.75 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/p_0_out[1]          |                                |                3 |             11 |         3.67 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n631[10]_i_1_n_0               |                                |                4 |             11 |         2.75 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n764[10]_i_1_n_0               |                                |                4 |             11 |         2.75 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n777                |                                |                5 |             11 |         2.20 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n393[10]_i_2_n_0               | eth/n389/n378/n393[10]_i_1_n_0 |                2 |             11 |         5.50 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n735[10]_i_2_n_0               | eth/n735[10]_i_1_n_0           |                4 |             11 |         2.75 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n764[10]_i_1_n_0               |                                |                5 |             11 |         2.20 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/p_0_out[1]          |                                |                2 |             11 |         5.50 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n777                |                                |                2 |             11 |         5.50 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n782[10]_i_1_n_0               |                                |                4 |             12 |         3.00 |
 |  CLK100MHZ_IBUF_BUFG         |                                    | eth/n1383/n687/n753            |                5 |             13 |         2.60 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n183                     |                                |                6 |             16 |         2.67 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n656[n21][15]_i_1_n_0          |                                |                4 |             16 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n756[15]_i_1_n_0               |                                |                6 |             16 |         2.67 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n1383/n687/n713                | eth/n783[15]_i_1_n_0           |                5 |             16 |         3.20 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n756[15]_i_1_n_0               |                                |                5 |             16 |         3.20 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n183                     |                                |                5 |             16 |         3.20 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n713[39]_i_1_n_0               | eth/n749[16]_i_1__0_n_0        |                4 |             17 |         4.25 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n632                     |                                |                5 |             20 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n713[39]_i_1_n_0               | eth/n749[16]_i_1__0_n_0        |                6 |             17 |         2.83 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n632                     |                                |                4 |             20 |         5.00 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n732[10]_i_1__0_n_0            |                                |                7 |             20 |         2.86 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n392[8]_i_1_n_0                |                                |                3 |             20 |         6.67 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1385/n915                     |                                |                6 |             21 |         3.50 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n560[23]_i_1_n_0               |                                |                7 |             30 |         4.29 |
-|  CLK100MHZ_IBUF_BUFG         | eth/RMII_RST_N                     |                                |               15 |             32 |         2.13 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n392[8]_i_1_n_0                |                                |                5 |             20 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1385/n915                     |                                |                8 |             21 |         2.62 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n560[23]_i_1_n_0               |                                |               12 |             30 |         2.50 |
+|  CLK100MHZ_IBUF_BUFG         |                                    | pxlgen/clear                   |                8 |             32 |         4.00 |
+|  CLK100MHZ_IBUF_BUFG         | eth/RMII_RST_N                     |                                |               14 |             32 |         2.29 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n655[n12][31]_i_1_n_0          |                                |                6 |             32 |         5.33 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n746[31]_i_1__0_n_0            |                                |               20 |             32 |         1.60 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n656[n19][15]_i_1_n_0          |                                |               10 |             32 |         3.20 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n656[n19][15]_i_1_n_0          |                                |                7 |             32 |         4.57 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n746[31]_i_1__0_n_0            |                                |               22 |             32 |         1.45 |
+|  CLK100MHZ_IBUF_BUFG         | pxlgen/p_0_in_0                    | pxlgen/clear                   |                7 |             32 |         4.57 |
+|  CLK100MHZ_IBUF_BUFG         |                                    | eth/n1354[n50]                 |               23 |             47 |         2.04 |
 |  CLK100MHZ_IBUF_BUFG         | eth/n654[n5][47]_i_1_n_0           |                                |               18 |             48 |         2.67 |
-|  CLK100MHZ_IBUF_BUFG         |                                    | eth/n1354[n50]                 |               25 |             49 |         1.96 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n713                     |                                |               18 |             56 |         3.11 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n713[39]_i_1_n_0               |                                |               15 |             57 |         3.80 |
-|  CLK100MHZ_IBUF_BUFG         | eth/n1384/n248                     |                                |               27 |             96 |         3.56 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1383/n713                     |                                |               15 |             56 |         3.73 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n713[39]_i_1_n_0               |                                |               18 |             57 |         3.17 |
 |  CLK100MHZ_IBUF_BUFG         | eth/hasBuffer.n246[15]_i_1_n_0     |                                |               24 |             96 |         4.00 |
-|  CLK100MHZ_IBUF_BUFG         |                                    |                                |              132 |            309 |         2.34 |
+|  CLK100MHZ_IBUF_BUFG         | eth/n1384/n248                     |                                |               28 |             96 |         3.43 |
+|  CLK100MHZ_IBUF_BUFG         |                                    |                                |              140 |            311 |         2.22 |
 +------------------------------+------------------------------------+--------------------------------+------------------+----------------+--------------+
 
 

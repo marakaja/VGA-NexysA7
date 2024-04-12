@@ -14,7 +14,7 @@ ECHO is off.
     ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 
 source toplevel.tcl -notrace
-create_project: Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 460.469 ; gain = 182.738
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 460.336 ; gain = 183.410
 Command: read_checkpoint -auto_incremental -incremental {C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/utils_1/imports/synth_1/toplevel.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/utils_1/imports/synth_1/toplevel.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -27,22 +27,22 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 18652
+INFO: [Synth 8-7075] Helper process launched with PID 13736
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1303.777 ; gain = 440.320
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1304.180 ; gain = 439.613
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'toplevel' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:60]
-INFO: [Synth 8-637] synthesizing blackbox instance 'eth' of component 'FC1001_RMII' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:154]
-INFO: [Synth 8-3491] module 'pixelgen' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:37' bound to instance 'pxlgen' of component 'pixelgen' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:189]
-INFO: [Synth 8-638] synthesizing module 'pixelgen' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:46]
-INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/synth_1/.Xil/Vivado-22308-MARABOOK2/realtime/blk_mem_gen_0_stub.vhdl:6' bound to instance 'mem' of component 'blk_mem_gen_0' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:66]
-INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/synth_1/.Xil/Vivado-22308-MARABOOK2/realtime/blk_mem_gen_0_stub.vhdl:17]
-INFO: [Synth 8-256] done synthesizing module 'pixelgen' (0#1) [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:46]
+INFO: [Synth 8-637] synthesizing blackbox instance 'eth' of component 'FC1001_RMII' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:163]
+INFO: [Synth 8-3491] module 'pixelgen' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:37' bound to instance 'pxlgen' of component 'pixelgen' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:200]
+INFO: [Synth 8-638] synthesizing module 'pixelgen' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:50]
+INFO: [Synth 8-3491] module 'blk_mem_gen_0' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/synth_1/.Xil/Vivado-25016-MARABOOK2/realtime/blk_mem_gen_0_stub.vhdl:6' bound to instance 'mem' of component 'blk_mem_gen_0' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:81]
+INFO: [Synth 8-638] synthesizing module 'blk_mem_gen_0' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/synth_1/.Xil/Vivado-25016-MARABOOK2/realtime/blk_mem_gen_0_stub.vhdl:20]
+INFO: [Synth 8-256] done synthesizing module 'pixelgen' (0#1) [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:50]
 	Parameter NBIT bound to: 3 - type: integer 
 	Parameter PERIOD bound to: 5 - type: integer 
 	Parameter SYNC_LOW bound to: 1 - type: integer 
 	Parameter SYNC_HIGH bound to: 2 - type: integer 
-INFO: [Synth 8-3491] module 'simple_counter' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:21' bound to instance 'CLOCK_DIV' of component 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:197]
+INFO: [Synth 8-3491] module 'simple_counter' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:21' bound to instance 'CLOCK_DIV' of component 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:212]
 INFO: [Synth 8-638] synthesizing module 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:40]
 	Parameter NBIT bound to: 3 - type: integer 
 	Parameter PERIOD bound to: 5 - type: integer 
@@ -53,7 +53,7 @@ INFO: [Synth 8-256] done synthesizing module 'simple_counter' (0#1) [C:/Users/Ma
 	Parameter PERIOD bound to: 528 - type: integer 
 	Parameter SYNC_LOW bound to: 420 - type: integer 
 	Parameter SYNC_HIGH bound to: 484 - type: integer 
-INFO: [Synth 8-3491] module 'simple_counter' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:21' bound to instance 'HSYNC' of component 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:213]
+INFO: [Synth 8-3491] module 'simple_counter' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:21' bound to instance 'HSYNC' of component 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:228]
 INFO: [Synth 8-638] synthesizing module 'simple_counter__parameterized1' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:40]
 	Parameter NBIT bound to: 10 - type: integer 
 	Parameter PERIOD bound to: 528 - type: integer 
@@ -64,7 +64,7 @@ INFO: [Synth 8-256] done synthesizing module 'simple_counter__parameterized1' (0
 	Parameter PERIOD bound to: 628 - type: integer 
 	Parameter SYNC_LOW bound to: 601 - type: integer 
 	Parameter SYNC_HIGH bound to: 605 - type: integer 
-INFO: [Synth 8-3491] module 'simple_counter' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:21' bound to instance 'VSYNC' of component 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:229]
+INFO: [Synth 8-3491] module 'simple_counter' declared at 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:21' bound to instance 'VSYNC' of component 'simple_counter' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:244]
 INFO: [Synth 8-638] synthesizing module 'simple_counter__parameterized3' [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:40]
 	Parameter NBIT bound to: 10 - type: integer 
 	Parameter PERIOD bound to: 628 - type: integer 
@@ -72,21 +72,34 @@ INFO: [Synth 8-638] synthesizing module 'simple_counter__parameterized3' [C:/Use
 	Parameter SYNC_HIGH bound to: 605 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'simple_counter__parameterized3' (0#1) [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/CLK20M.vhd:40]
 INFO: [Synth 8-256] done synthesizing module 'toplevel' (0#1) [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:60]
+WARNING: [Synth 8-6014] Unused sequential element lastRxDataValid_reg was removed.  [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/pixelgen.vhd:140]
+WARNING: [Synth 8-3848] Net JA in module/entity toplevel does not have driver. [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/toplevel.vhd:40]
 WARNING: [Synth 8-3917] design toplevel has port LED[7] driven by constant 1
 WARNING: [Synth 8-3917] design toplevel has port LED[6] driven by constant 1
+WARNING: [Synth 8-7129] Port rx_data_last in module pixelgen is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[3] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[2] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[7] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[6] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[5] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[4] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[3] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[2] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[1] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[0] in module toplevel is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1415.609 ; gain = 552.152
+Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1417.094 ; gain = 552.527
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1415.609 ; gain = 552.152
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1417.094 ; gain = 552.527
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 1415.609 ; gain = 552.152
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1417.094 ; gain = 552.527
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1415.609 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1417.094 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -101,50 +114,58 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/toplevel_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1494.066 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1463.098 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Pý¡stup byl odepýen.
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1494.066 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1463.098 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a50tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property KEEP_HIERARCHY = SOFT for pxlgen/mem. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
 	   2 Input   10 Bit       Adders := 2     
 	   2 Input    3 Bit       Adders := 1     
 +---Registers : 
+	               32 Bit    Registers := 1     
+	               17 Bit    Registers := 1     
+	               12 Bit    Registers := 1     
 	               10 Bit    Registers := 2     
 	                3 Bit    Registers := 1     
-	                1 Bit    Registers := 6     
+	                1 Bit    Registers := 7     
 +---Muxes : 
-	   2 Input   17 Bit        Muxes := 1     
-	   2 Input   12 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 5     
+	   5 Input   17 Bit        Muxes := 1     
+	   4 Input   17 Bit        Muxes := 1     
+	   2 Input   12 Bit        Muxes := 5     
 	   2 Input    3 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 5     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -163,26 +184,36 @@ Start Cross Boundary and Area Optimization
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 WARNING: [Synth 8-3917] design toplevel has port LED[7] driven by constant 1
 WARNING: [Synth 8-3917] design toplevel has port LED[6] driven by constant 1
+WARNING: [Synth 8-7129] Port LED[3] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port LED[2] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[7] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[6] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[5] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[4] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[3] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[2] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[1] in module toplevel is either unconnected or has no load
+WARNING: [Synth 8-7129] Port JA[0] in module toplevel is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:52 ; elapsed = 00:00:55 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:07 ; elapsed = 00:01:11 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:07 ; elapsed = 00:01:11 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Timing Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:07 ; elapsed = 00:01:11 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -200,37 +231,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -251,45 +282,46 @@ Report Cell Usage:
 |1     |FC1001_RMII_bbox   |     1|
 |2     |blk_mem_gen_0_bbox |     1|
 |3     |BUFG               |     1|
-|4     |CARRY4             |    11|
-|5     |LUT1               |     6|
-|6     |LUT2               |    24|
-|7     |LUT3               |     9|
-|8     |LUT4               |    36|
-|9     |LUT5               |     6|
-|10    |LUT6               |    11|
-|11    |FDRE               |    27|
+|4     |CARRY4             |    35|
+|5     |LUT1               |     9|
+|6     |LUT2               |    79|
+|7     |LUT3               |    27|
+|8     |LUT4               |    50|
+|9     |LUT5               |    14|
+|10    |LUT6               |    21|
+|11    |FDRE               |   121|
 |12    |IBUF               |     5|
-|13    |OBUF               |    36|
+|13    |OBUF               |    26|
+|14    |OBUFT              |    10|
 +------+-------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:21 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 3 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:55 ; elapsed = 00:01:20 . Memory (MB): peak = 1494.066 ; gain = 552.152
-Synthesis Optimization Complete : Time (s): cpu = 00:01:22 ; elapsed = 00:01:25 . Memory (MB): peak = 1494.066 ; gain = 630.609
+Synthesis finished with 0 errors, 0 critical warnings and 13 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:32 . Memory (MB): peak = 1463.098 ; gain = 552.527
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:33 . Memory (MB): peak = 1463.098 ; gain = 598.531
 INFO: [Project 1-571] Translating synthesized netlist
 Parsing EDIF File [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/FC1001_RMII.edn]
 Finished Parsing EDIF File [C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.srcs/sources_1/new/FC1001_RMII.edn]
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.031 . Memory (MB): peak = 1494.066 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 203 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.014 . Memory (MB): peak = 1463.098 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 227 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-43] Netlist 'toplevel' is not ideal for floorplanning, since the cellview 'FC1001_RMII' defined in file 'FC1001_RMII.edn' contains large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-479] Netlist was created with Vivado 2017.4
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-141] Inserted 1 OBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1494.066 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1463.098 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 Pý¡stup byl odepýen.
-Synth Design complete | Checksum: d67c9f0c
+Synth Design complete | Checksum: 50d9817e
 INFO: [Common 17-83] Releasing license: Synthesis
-40 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+40 Infos, 31 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:36 ; elapsed = 00:01:43 . Memory (MB): peak = 1494.066 ; gain = 1021.477
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1494.066 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 1463.098 ; gain = 990.527
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1463.098 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Mara/Documents/Android apps/VGA-NexysA7/First_test_project.runs/synth_1/toplevel.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file toplevel_utilization_synth.rpt -pb toplevel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr  3 11:31:37 2024...
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 11 15:54:10 2024...

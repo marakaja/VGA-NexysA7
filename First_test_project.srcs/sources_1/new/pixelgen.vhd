@@ -39,7 +39,7 @@ entity pixelgen is
         clk : in    std_logic  ;
         pixel_data : out std_logic_vector(11 downto 0);
         row : in std_logic_vector(9 downto 0);
-        col : in std_logic_vector(9 downto 0)
+        col : in std_logic_vector(9 downto 0);
 
         rx_data : in std_logic_vector(7 downto 0);
         rx_data_valid : in std_logic;
@@ -55,10 +55,13 @@ signal addr : std_logic_vector(19 downto 0);
 signal pixel_out :  std_logic_vector(11 downto 0);
 
 signal writeAddr : std_logic_vector(16 downto 0) := (others => '0');
-signal writeData : std_logic_vector(11 downto 0) := (others => 0);
-signal writeEnable : std_logic := '0';
+signal writeData : std_logic_vector(11 downto 0) := (others => '0');
+signal writeEnable : std_logic_vector(0 downto 0) := (others => '0');
+
+signal lastRxDataValid : std_logic := '0';
 
 signal byteCounter : integer := 0;
+signal bytesInPacket : integer := 0;
 
 component blk_mem_gen_0 IS
   PORT (
@@ -85,7 +88,8 @@ mem : component blk_mem_gen_0
 
     wea => writeEnable,
     dina => writeData,
-    addra => writeAddr
+    addra => writeAddr,
+    enb => '1'
     );
 
   addr  <=  std_logic_vector(400 * (unsigned(row)/2) + unsigned(col)) when (in_pixel_range = '1') else (others => '0');
@@ -99,20 +103,47 @@ mem : component blk_mem_gen_0
   begin
     if rising_edge(clk) then
       if rx_data_valid = '1' then
-        writeEnable <= '1';
-        if byteCouter = 1 then
-          writeData <= writeAddr(11 downto 8) & rx_data;
-          writeAddr <= writeAddr + 1;
-        else
-          writeData <= (rx_data(3 downto 0) & x"00", );
-          byteCounter <= byteCounter + 1;
-        end if;
-        
-        
-      else
-        writeEnable <= '0';
-        byteCounter <= 0;
 
+        if bytesInPacket < 5 then --TODO define header of packet size
+          case bytesInPacket is
+            when 0 => 
+              --Set incoming data as the least significant byte of the address
+              writeAddr <= writeAddr(16 downto 8) & rx_data ;
+            when 1 =>
+              --Set incoming data as the more significant byte of the address
+              writeAddr <= writeAddr(16 downto 16) & rx_data & writeAddr(7 downto 0);
+            when 2 =>
+              writeAddr <= rx_data(0 downto  0) & writeAddr(15 downto 0);
+
+
+            when others =>
+              null;
+          end case;
+          
+          
+        else
+         
+        
+          if byteCounter = 1 then
+            writeData <= writeData(11 downto 8) & rx_data;
+            byteCounter <=  0;
+            writeEnable <= "1";
+          else
+            writeEnable <= "0";
+            writeData <= (rx_data(3 downto 0) & x"00");
+            byteCounter <= byteCounter + 1;
+            writeAddr <= std_logic_vector(UNSIGNED(writeAddr) + 1);
+          end if;
+          
+        end if;
+
+        lastRxDataValid <= rx_data_valid;     
+        bytesInPacket <= bytesInPacket + 1;
+     
+      else
+        writeEnable <= "0";
+        byteCounter <= 0;
+        bytesInPacket <= 0;
       end if;
 
 

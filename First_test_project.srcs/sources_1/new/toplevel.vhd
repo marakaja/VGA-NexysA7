@@ -64,7 +64,11 @@ component pixelgen is
             clk : in    std_logic  ;
             pixel_data : out std_logic_vector(11 downto 0);
             row : in std_logic_vector(9 downto 0);
-            col : in std_logic_vector(9 downto 0)
+            col : in std_logic_vector(9 downto 0);
+            
+            rx_data : in std_logic_vector(7 downto 0);
+            rx_data_valid : in std_logic;
+            rx_data_last : in std_logic
             );
 end component pixelgen;
 
@@ -198,7 +202,11 @@ pxlgen : pixelgen
         clk => CLK100MHZ,
         pixel_data => color,
         row => row,
-        col => col
+        col => col,
+        
+        rx_data => RX_data,
+        rx_data_valid => RX_valid,
+        rx_data_last => RX_last
         );
 
 CLOCK_DIV : simple_counter
